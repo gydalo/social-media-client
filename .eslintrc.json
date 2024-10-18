@@ -10,7 +10,7 @@
   "extends": "eslint:recommended",
   "overrides": [
     {
-      "files": ["**/*.cy.js"],
+      "files": ["**/*.cy.js", "cypress/**"],
       "env": { "cypress/globals": true },
       "plugins": ["cypress"],
       "extends": ["plugin:cypress/recommended"],
@@ -27,10 +27,10 @@
       "rules": { "jest/prefer-expect-assertions": "off" }
     },
     {
-      "files": ["cypress.config.js"],
+      "files": ["cypress.config.js", "cypress/**"],
       "env": { "node": true },
       "parserOptions": {
-        "sourceType": "script" 
+        "sourceType": "script"
       },
       "globals": {
         "require": "readonly",
