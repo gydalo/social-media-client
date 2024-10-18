@@ -45,7 +45,9 @@ describe('Login Test', function () {
     cy.wait('@loginRequest');
 
     cy.on('window:alert', (string) => {
-      expect(string).to.equal('Wrong username or password');
+      expect(string).to.equal(
+        'Either your username was not found or your password is incorrect',
+      );
     });
   });
 });
