@@ -52,6 +52,7 @@ describe('login function', () => {
       ok: false,
       statusText: 'Unauthorized',
     };
+
     fetch.mockResolvedValueOnce(mockErrorResponse);
     await expect(login('test@example.com', 'wrongPassword')).rejects.toThrow(
       'Unauthorized',

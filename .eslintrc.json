@@ -1,20 +1,40 @@
 {
   "env": {
     "browser": true,
+    "amd": true,
+    "node": true,
     "es2021": true,
-    "jest": true
+    "jest": true,
+    "cypress/globals": true
   },
   "extends": "eslint:recommended",
   "overrides": [
     {
-      "files": ["**/*.test.js", "**/*.spec.jsx", "**/*.cy.js"],
-      "env": { "jest": true, "cypress/globals": true },
-      "plugins": ["jest", "cypress"],
-      "extends": ["plugin:jest/recommended", "plugin:cypress/recommended"],
+      "files": ["**/*.cy.js"],
+      "env": { "cypress/globals": true },
+      "plugins": ["cypress"],
+      "extends": ["plugin:cypress/recommended"],
       "rules": {
-        "jest/prefer-expect-assertions": "off",
         "cypress/no-unnecessary-waiting": "off",
         "no-unused-vars": "off"
+      }
+    },
+    {
+      "files": ["**/*.test.js", "**/*.spec.jsx"],
+      "env": { "jest": true },
+      "plugins": ["jest"],
+      "extends": ["plugin:jest/recommended"],
+      "rules": { "jest/prefer-expect-assertions": "off" }
+    },
+    {
+      "files": ["cypress.config.js"],
+      "env": { "node": true },
+      "parserOptions": {
+        "sourceType": "script" 
+      },
+      "globals": {
+        "require": "readonly",
+        "module": "readonly"
       }
     }
   ],
